@@ -33,7 +33,7 @@ than SCCS.
 
 #### Git user interfaces
 
-You do not know GIT until you can use its CLI inerface. GIT's CLI
+You do not know GIT until you can use its CLI interface. GIT's CLI
 interface was designed to implement user version control workflows.
 Typically I find that most GIT GUI clients, web interfaces and IDEs are
 designed to adapt the user to some particular workflow, typically that
@@ -259,7 +259,7 @@ thing they share is ssh access to the same out-of-date CentOS Linux
 system where I had no root access.
 
 First I had to ask the system admin "nicely" to have the contractors and
-myself put in the same linux secondary group with access to some common
+myself put in the same Linux secondary group with access to some common
 filesystem real estate. At least this admin knew what a "secondary
 group" was.
 
@@ -1829,6 +1829,6 @@ and `git switch branch`. The first is a bit overloaded.
 
 **TODO:** Look into git-rev-list and git-show-branch
 
-**TODO:** Give examples og Git Ranges in use
+**TODO:** Give examples of Git Ranges in use
 
 **TODO:** Update GitHub access
