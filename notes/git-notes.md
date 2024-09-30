@@ -1714,6 +1714,8 @@ and `git switch branch`. The first is a bit overloaded.
 **TODO:** Add info on `git blame`
 
 **TODO:** Add info on `rerere`
+https://git-scm.com/docs/git-rerere
+https://git-scm.com/book/en/v2/Git-Tools-Rerere
 
 **TODO:** Add info on `git maintenance`
 
@@ -1724,3 +1726,28 @@ and `git switch branch`. The first is a bit overloaded.
 **TODO:** Give examples of Git Ranges in use
 
 **TODO:** Update GitHub access
+
+**TODO** Git reset and `~` vs `^` (time moves down)
+
+        G   H   I   J
+         \ /     \ /
+          D   E   F
+           \  |  / \
+            \ | /   |
+             \|/    |
+              B     C
+               \   /
+                \ /
+                 A
+        A =      = A^0
+        B = A^   = A^1     = A~1
+        C = A^2
+        D = A^^  = A^1^1   = A~2
+        E = B^2  = A^^2
+        F = B^3  = A^^3
+        G = A^^^ = A^1^1^1 = A~3
+        H = D^2  = B^^2    = A^^^2  = A~2^2
+        I = F^   = B^3^    = A^^3^
+        J = F^2  = B^3^2   = A^^3^2
+
+Note that git-merge can join two or more development histories together.
