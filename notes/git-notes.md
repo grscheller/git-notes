@@ -26,7 +26,7 @@ In the 1990's, as a contractor for AT&T Microelectonics, I was the
 SCCS administrator for AT&T Microelectronics Process Control
 Manufacturing Execution System which tracked and controlled products
 through multiple semiconductor manufacturing production lines. Process
-Control, a misnormer, Production Cotrol would have been a better name,
+Control, a misnomer, Production Control would have been a better name,
 controlled production based on customer orders and inventory. If it had
 existed, GIT would have been much simpler to configure, maintain and use
 than SCCS.
@@ -37,11 +37,11 @@ You do not know GIT until you can use its CLI interface. GIT's CLI
 interface was designed to implement user version control workflows.
 Typically I find that most GIT GUI clients, web interfaces and IDEs are
 designed to adapt the user to some particular workflow, typically that
-of the tool designer. Without a knowledge of GIT's CLI iterface, it is
-much harded to know what to look for in a particular GIT GUI client's
-menus, keyboard shortcuts, and help utility. GUI and web clients come
-and go, GIT's CLI interface will be with us for decades, if not
-centuries.
+of the tool designer. Without a knowledge of GIT's CLI interface, it is
+much more difficult to know what to look for in a particular GIT GUI
+client's menus, keyboard shortcuts, and help utility. GUI and web
+clients come and go, GIT's CLI interface will be with us for decades, if
+not centuries.
 
 #### Resources I used to learn GIT:
 
@@ -62,27 +62,23 @@ Most Linux distributions have a good GIT tutorial in the man pages.
 ```bash
    $ man gittutorial
 ```
-
 To get a comprehensive overview of git, use
 
 ```bash
    $ man git
 ```
-
 and to get information on individual commands
 
 ```bash
    $ man git-add
    $ man git-info
 ```
-
 or using the --help option in git
 
 ```bash
    $ git --help
    $ git clone --help
 ```
-
 Three "patterns" to best leverage the above help commands
 
 ```bash
@@ -90,7 +86,6 @@ Three "patterns" to best leverage the above help commands
    $ git verb --help
    $ man git-verb
 ```
-
 Also see [GIT help files](https://support.github.com/) on the web.
 
 ---
@@ -234,14 +229,13 @@ To clone an existing GIT repository
    $ git clone grs@us.navo.hpc.mil:proj/grsHome.git
    $ git clone ~/devel/myRepo ~/junk/myRepoCopy
 ```
-
 This is not just a snapshot from the repo of the project, it clones the
 entire repository, complete with all change control files, containing
 all past versions of the project. The second version changes the name of
 the directory containing the GIT repo from grok-typescript to learn-ts.
 GIT does not care about the name of the directory it gets cloned into.
 For the last version, the "upstream repo" or `origin` was set to
-"/home/grs/devel/myRepo" with no knowledge of the upstream's `origin`,
+"/home/grs/devel/myRepo" with no knowledge of the upstream `origin`,
 if it even exists.
 
 ### Using GitHub or GitLab
@@ -260,7 +254,7 @@ system where I had no root access.
 
 First I had to ask the system admin "nicely" to have the contractors and
 myself put in the same Linux secondary group with access to some common
-filesystem real estate. At least this admin knew what a "secondary
+file system real estate. At least this admin knew what a "secondary
 group" was.
 
 ```bash
@@ -270,7 +264,6 @@ group" was.
    $(root) chown grs:repo /share/repos
    $(root) chmod 2770 /share/repos
 ```
-
 Then using my login
 
 ```bash
@@ -280,7 +273,6 @@ Then using my login
    $ cd /share/repos
    $ git init --bare OurProject.git
 ```
-
 This initializes an empty GIT repository, but without the outer working
 directory. Shared repositories should always be created with the
 `--bare` flag. Think `--bare` as marking the repository as a storage
@@ -296,7 +288,6 @@ access:
    $ git fetch upstream
    $ git fetch --tags upstream
 ```
-
 This will bring in all the branches and tags. Next from the someProject
 upstream repo
 
@@ -304,10 +295,9 @@ upstream repo
    $ cd /home/grs/devel/someProject
    $ git remote add downstream /share/repos/ourProject.git
 ```
-
 Make sure your umask is set to `0007` so that all the files in
 ourProject.git get created with the necessary group rwx permissions for
-group access. If not, GIT will function, but with subtly bizzare
+group access. If not, GIT will function, but with subtly bizarre
 behavior. The SGID bit is set on the directory so that all files will be
 in the repo group, not a user's default groups.
 
@@ -317,7 +307,7 @@ from my repo.
 
 Changes I would change if I had to do this again:
 
-* refuse to help unless I had administrator privaledges
+* refuse to help unless I had administrator privileges
 * run an actual git server either locally or somewhere else
 * have the contractors digitally sign their commits
 
@@ -353,7 +343,6 @@ On the client:
    $ git remote rm origin
    $ git remote add origin grs@us.mhpcc.hpc.mil:projects/SDT.git
 ```
-
 Note: you may need to tell a branch what its upstream now is
 
 ```bash
@@ -369,7 +358,6 @@ Let's say I have a working repo in ~/Devel/SDT
 ```bash
    $ cd ~/Devel/SDT
 ```
-
 Make sure we are in a stable state
 
 ```bash
@@ -377,7 +365,6 @@ Make sure we are in a stable state
    On branch sdt_devel_branch
    nothing to commit, working tree clean
 ```
-
 See what branches are here
 
 ```bash
@@ -386,7 +373,6 @@ See what branches are here
    * sdt_devel_branch
      master
 ```
-
 Let's clone the repo
 
 ```bash
@@ -396,7 +382,6 @@ Let's clone the repo
    $ git clone ../Devel/SDT
    Initialized empty GIT repository in /home/grs/temp/SDT/.git/
 ```
-
 Let's see what we got
 
 ```bash
@@ -407,7 +392,6 @@ Let's see what we got
    origin    /home/grs/temp/../Devel/SDT (fetch)
    origin    /home/grs/temp/../Devel/SDT (push)
 ```
-
 We only picked up the currently active branch. I will sometimes do this
 to have a quick and dirty snapshot of a working copy of the software.
 Also, I can 'rm -rf .git' and either tar ball or burn to DVD what I want
@@ -423,13 +407,11 @@ The fetch command updates local copies of remote branches.
 ```bash
    $ git fetch origin
 ```
-
 will update information of local copies of all remote branches.
 
 ```bash
    $ git fetch --all
 ```
-
 will do this with all remote repositories your local repo knows about.
 
 **Note:** 'git fetch' commands will not create local branches to track
@@ -449,7 +431,6 @@ To overiding global configurations when cloning a repo
        --config http.verify=true \
        https://aur.archlinux.org/dropbox.git
 ```
-
 You can use `-c` instead of `--config`.
 
 ---
@@ -462,13 +443,11 @@ of the repo you are currently in, do
 ```bash
    $ git log
 ```
-
 for a given director in the repo, do
 
 ```bash
    $ git log grok/Haskell
 ```
-
 For a given file, do
 
 ```bash
@@ -479,7 +458,7 @@ For a given file, do
 
 ## GIT Basics:
 
-Here is the "lifecycle" of a file in a GIT workspace
+Here is the "life cycle" of a file in a GIT workspace
 
 ```
    Untracked        Unmodified      Modified         Staged
@@ -491,8 +470,7 @@ Here is the "lifecycle" of a file in a GIT workspace
        |                |<⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃commit file⁃⁃⁃|
        |                |              |                |
 ```
-
-and here is the "lifecycle" of a GIT workflow
+And here is the "life cycle" of a GIT workflow
 
 ```
    remote    tracked    local       index    workspace
@@ -519,7 +497,6 @@ To checking status of the files in your repo
    $ git status
    $ git status --short
 ```
-
 **Note:** Git only tracks files. not directories.
 
 ### Begin tracking files
@@ -530,7 +507,6 @@ To begin tracking a file
    $ git add myfile.c    # myfile.c is now staged
    $ git add directory   # all files staged recursively
 ```
-
 Think of add as meaning "add this content to the next commit" rather
 than "add this file to the project." GIT stages the file as it was when
 'git add' command was issued. If you modify a file after it was staged,
@@ -556,7 +532,7 @@ what is being done. The git-reset command seems to be taking advantage
 of GIT implementation details and is opaque to what is really being
 done.
 
-To discard changes not alrady staged
+To discard changes not already staged
 
 ```bash
    $ git checkout some_file
@@ -584,7 +560,6 @@ Example .gitinore file:
    # ignore all .txt files in the doc/ directory tree
    doc/**/*.txt
 ```
-
 * Blank lines and lines starting with # are ignored
 * Extended shell globbing patterns work
 * End patterns with a forward slash (/) to specify a directory
@@ -603,10 +578,9 @@ To remove files from a branch
    $ git rm file1 file2 dir1/
    $ git commit
 ```
-
 If there are untracked changes to the files, the files will remain in
-the workspace as untracted files. GIT does not track directories so
-dir1/ will remain too if there are untracted files in it.
+the workspace as untracked files. GIT does not track directories so
+dir1/ will remain too if there are untracked files in it.
 
 You may need to do
 
@@ -614,8 +588,7 @@ You may need to do
    $ rm file1 file2
    $ rm -r dir1/
 ```
-
-to actually get rid of them from the working directory. Sometimes one
+To actually get rid of them from the working directory. Sometimes one
 run into empty directories when files are removed upstream.
 
 Lets say you want to remove lots of files. For example, lets get rid of
@@ -624,14 +597,12 @@ all the subversion directories (since we are using GIT).
 ```bash
    $ find . -depth -name '.svn' -exec rm -rf '{}' \;
 ```
-
-best practice is to then use
+Best practice is to then use
 
 ```bash
    $ git add --update
    $ git commit
 ```
-
 The `--update` or `-u` option only matches files in the index rather
 than the working tree. This removes as well as modifies index entries to
 match the working tree, but adds no new files.
@@ -643,8 +614,7 @@ scripting like
    $ git rm $(git status | grep delete | awk '{print $3}')
    $ git commit
 ```
-
-which will also work.
+Which will also work.
 
 To updating major changes, such as a vendor upgrade, with file additions
 and removals, in a brute force sort of way, use
@@ -653,7 +623,6 @@ and removals, in a brute force sort of way, use
    $ git add --all
    $ git commit
 ```
-
 The `--all` or `-A` option is like `--update` except that it also will
 match against files in the working tree.
 
@@ -668,7 +637,6 @@ To move files
    $ git mv path/to/filename new/path/to/new_filename
    $ git commit
 ```
-
 GIT will move and stage the original version. If you move a file with
 unstaged changes, The changes made to the file will be unstaged changes
 within the working directory.
@@ -681,7 +649,6 @@ directory
    $ git mv file1 file2 file3 new_dir
    $ git commit
 ```
-
 To remove an empty directory.
 
 GIT does not track directories, only files. You can't use "git
@@ -692,13 +659,11 @@ A good habit is to periodically use
 ```bash
    $ git clean -dn
 ```
-
 to see what needs cleaning up. Either manually clean up or use
 
 ```bash
    $ git clean -df
 ```
-
 The `git clean` command takes the following options
 
 | Option    | Description                                           |
@@ -711,7 +676,7 @@ The `git clean` command takes the following options
 |  `-X`     | remove only files ignored by git                      |
 |  `-e pat` | add pattern `pat` to ignored patterns from .gitignore |
 
-either -n, -f, or -i must be selected.
+One of -n, -f, or -i must be selected.
 
 ---
 
@@ -727,7 +692,7 @@ Reasonable reasons for squashing commits might be
 * enforcing a policy of never pushing non-working history to a
   software release branch
 * to more effectively use `git bisect` to find a bug
-  * helpful to endusers not familiar with the code base who spot a bug
+  * helpful to end users not familiar with the code base who spot a bug
 
 Hiding your *dirty laundry* so that everyone will think you write
 perfect code the first time is never a good reason to rebase. 
@@ -737,8 +702,7 @@ perfect code the first time is never a good reason to rebase.
 ```bash
    $ git rebase -i HEAD~4
 ```
-
-       Drops you into an editor session:
+Drops you into an editor session:
 
 ```
    pick 8c4a6a5 Commit message four commits ago.
@@ -747,7 +711,6 @@ perfect code the first time is never a good reason to rebase.
    pick 8ae51b6 Commit message on last commit.
    ...
 ```
-
 And gives you the following choices to edit into above:
 
 ```
@@ -759,7 +722,6 @@ And gives you the following choices to edit into above:
    x, exec = run command (the rest of the line) using shell
    d, drop = remove commit
 ```
-
 In the case of a merge conflict, GIT drops you back to a shell. Fix the
 conflict, and
 
@@ -786,7 +748,6 @@ You don't want to be a *bad boy* and cause grief to others by doing a
 ```bash
    $ git push --force   # DON'T Do THIS!!!
 ```
-
 The above could swallow work done by others!
 
 There is a newer option to the `git push` command that may save you.
@@ -794,7 +755,6 @@ There is a newer option to the `git push` command that may save you.
 ```bash
    git push --force-with-lease
 ```
-
 When this option is used, GIT will let you force commit this change as
 long as it will not overwrite any work on the remote branch when more
 commits were added to the remote branch.
@@ -831,7 +791,6 @@ To create a new branch (does not checkout the branch)
 ```bash
    $ git branch myBranch
 ```
-
 This branch is based on the current branch checked out.
 
 To create a new local empty branch
@@ -852,7 +811,6 @@ List all available local branches:
 ```bash
    $ git branch
 ```
-
 To also see the remote tracked branches:
 
 ```bash
@@ -880,8 +838,7 @@ To view merged local GIT branches relative to current branch
 ```bash
    $ git branch --merged
 ```
-
-and unmerged local GIT branches
+And unmerged local GIT branches
 
 ```bash
    $ git branch --no-merged
@@ -910,7 +867,6 @@ To delete a remote branch or tag
 ```bash
    $ git push origin --delete myBranchToDelete
 ```
-
 Prior to git version 7.0 but will still work
 
 ```bash
@@ -935,7 +891,6 @@ To rename a local Branch
 ```bash
    $ git branch -m oldname newname
 ```
-
 To rename the current branch to new name
 
 ```bash
@@ -983,19 +938,16 @@ development you’re working on.
 ```bash
    $ git checkout existingBranch
 ```
-
 Can also create a new branch at checkout
 
 ```bash
    $ git checkout -b newBranch
 ```
-
-or base it on another existing branch instead of the current one.
+Or base it on another existing branch instead of the current one.
 
 ```bash
    $ git checkout -b newBranch anotherBranch
 ```
-
 You can work on multiple branches in a single repository by switching
 between them with `git checkout` or `git switch`.
 
@@ -1006,7 +958,6 @@ you are tracking from, usually the one you first cloned from).
    $ git fetch
    $ git checkout some_new_remote_branch
 ```
-
 If you are tracking several remote branches, you may need to be a bit
 more specific:
 
@@ -1024,7 +975,6 @@ Lets say we have two remotes each with a branch with same name
    origin/spaceRad
    scheller/master
 ```
-
 and we are already tracking origin/master.
 
 ```bash
@@ -1033,13 +983,11 @@ and we are already tracking origin/master.
      dmc_run
    * master
 ```
-
 How do we checkout scheller/master? We give it another name
 
 ```bash
    $ git checkout -b scheller-master --track scheller/master
 ```
-
 Now we have
 
 ```bash
@@ -1067,7 +1015,6 @@ To merge a specific branch into the current branch
 ```bash
    $ git merge someBranch
 ```
-
 **Note:** The branch you are merging into is the currently checked out
 branch. If you are in a "detached HEAD" state, you will need to create
 a branch to merge someBranch into.
@@ -1088,14 +1035,12 @@ edit some files
    $ git add file1 file2 file3
    $ git commit -m 'Starting new feature X'
 ```
-
 edit some more files
 
 ```bash
    $ git add file2 file4
    $ git commit -m 'Finish new feature X'
 ```
-
 Parallel development on the master branch
 
 ```bash
@@ -1107,14 +1052,12 @@ edit some files, file3 changes somewhat orthogonal to feature X changes
    $ git add file3 file5
    $ git commit -m 'Make some super-stable changes to master'
 ```
-
 Merge in the new-feature branch
 
 ```bash
    $ git merge new-feature
    $ git commit
 ```
-
 Delete the new-feature branch once things are safely tested and merged,
 no sense keeping old cruft around. Best practices is to only push
 to origin only stable changes.
@@ -1130,25 +1073,22 @@ to origin only stable changes.
 ```bash
    $ git checkout -b long-term-feature master
 ```
+Do some development for a while ...
 
-       Do some development for a while ...
-
-       Switch to master and sync up with origin/master
+Switch to master and sync up with origin/master
 
 ```bash
    $ git checkout master
    $ git pull origin master
 ```
-
-       Switch back to development branch and merge in changes from master
+Switch back to development branch and merge in changes from master
 
 ```bash
    $ git checkout long-term-feature
    $ git merge master
    <edit any conflicts, 'git add' changes, commit>
 ```
-
-       Continue long-term development ...
+Continue long-term development ...
 
 ---
 
@@ -1162,7 +1102,6 @@ To list remote connections.
    $ git remote
    origin
 ```
-
 Use -v for more info.
 
 ```
@@ -1170,7 +1109,6 @@ Use -v for more info.
    origin grs@us.navo.hpc.mil:proj/PAT (fetch)
    origin grs@us.navo.hpc.mil:proj/PAT (push)
 ```
-
 The name, this case origin, can be used as a short cut to the other
 repository in git commands. The name origin is the default name given to
 the reprository you clone from, otherwise there is nothing special about
@@ -1181,19 +1119,16 @@ To add a remote connection
 ```bash
    $ git remote add ethel emurtz@devel.desilu.com:repo/iHateFred
 ```
-
 To remove a connection
 
 ```bash
    $ git remote rm fred
 ```
-
 To rename connection
 
 ```bash
    $ git remote rename ricky lucy
 ```
-
 Developers need to pull upstream commits to their local repository and
 push local commits to other repositories. Having connections to other
 individual developers makes it possible to collaborate outside of the
@@ -1208,7 +1143,6 @@ To make an existing branch track a remote branch, as of GIT 1.8.0
    $ git checkout bar
    $ git branch -u upstream/foo
 ```
-
 Now your local branch bar is tracking the branch foo on the remote repo
 upstream.
 
@@ -1217,13 +1151,11 @@ If you are on a branch other than bar,
 ```bash
    $ git branch -u upstream/foo bar
 ```
-
 if you like longer options, in 1.8.0+ you can do
 
 ```bash
    $ git branch --set-upstream-to=upstream/foo bar
 ```
-
 To keep things simple, best practices is to rename upstream to origin
 or origin-foo and rename your local branch bar to foo.
 
@@ -1237,7 +1169,6 @@ them into the local copy of the project.
    $ git fetch origin
    $ git diff origin
 ```
-
 or with more fidelity
 
 ```bash
@@ -1245,7 +1176,6 @@ or with more fidelity
    $ git fetch origin someBranch
    $ git diff origin/someBranch
 ```
-
 Use `git branch` to view local branches and use `git branch -r` for
 remote branches. Inspect these branches with the ususal git chechout and
 git log commands. Be aware that checking out a tracking branch will
@@ -1272,19 +1202,16 @@ and `get pull` use `git merge` behind the scenes.
 ```bash
    $ git pull origin someBranch
 ```
-
 To pull from the branch you are tracking with the current branch, use
 
 ```bash
    $ git pull
 ```
-
 **Warning!!!**
 
 ```bash
    $ git pull origin someBranch
 ```
-
 will pull in from the remote "someBranch" even if you are on the local
 "someOtherBranch".
 
@@ -1298,8 +1225,7 @@ Best practice is:
                          # shooting yourself in foot.
    $ git pull
 ```
-
-Now, `git status` may tell us we can't just do a fast foreward. In
+Now, `git status` may tell us we can't just do a fast foreword. In
 that case, create a new local branch tracking the remote branch. That
 way you have two places to morph before doing a `git merge`.
 
@@ -1308,15 +1234,13 @@ The command
 ```bash
    $ git pull
 ```
-
 which actually is the same as
 
 ```bash
    $ git fetch
    $ git merge FETCH_HEAD
 ```
-
-which accmplishes same thing as doing
+which accomplishes same thing as doing
 
 ```bash
    $ git fetch origin         # Sync local copy of master
@@ -1325,14 +1249,12 @@ which accmplishes same thing as doing
                                 # fetch from origin into your
                                 # local version of master.
 ```
-
 or, assuming master tracks origin/master
 
 ```bash
    $ git fetch
    $ git merge origin
 ```
-
 What you are actually merging into your working directory is
 a local copy of the remote repo. You are "tracking" the local
 copy. If pull requires a password, then the fetch will too, but
@@ -1346,7 +1268,6 @@ More explicitly,
    git fetch origin            # fetch all tracked upstream changes
    git merge origin/master     # local copy of upstream branch
 ```
-
 To push local changes elsewhere
 
 ```bash
@@ -1354,14 +1275,12 @@ To push local changes elsewhere
    $ git push origin --all
    $ git push origin --tags
 ```
-
 The commands (with nothing else)
 
 ```bash
    $ git push
    $ git push origin
 ```
-
 should be avoided on older versions of GIT. On git 1.9.5, it will
 push all tracked branches to their remotes. In later versions of
 git, it will just push whatever branch you are currently on.
@@ -1377,8 +1296,7 @@ On older versions of GIT
 ```bash
    $ git push Remote_Name :Branch_Name
 ```
-
-note the space before the colen, similar to renaming a branch,
+Note the space before the colon, similar to renaming a branch,
 you are pushing "nothing" into BranchName.
 
 To push a tag,
@@ -1386,13 +1304,11 @@ To push a tag,
 ```bash
    $ git push <RemoteName> <TagName>
 ```
-
-to push all tags
+To push all tags
 
 ```bash
    $ git push <RemoteName> --tag
 ```
-
 ### GIT push to GITHUB
 
 Cloning from GITHUB sets the URL to origin as
@@ -1401,7 +1317,6 @@ Cloning from GITHUB sets the URL to origin as
    $ git config remote.origin.url
    https://github.com/grscheller/scheller-linux-environment
 ```
-
 On Arch Linux 'git push' prompts for username and password and
 everything works fine. On CentOS 6.8 (git version 1.7.1) I get the
 error:
@@ -1411,13 +1326,11 @@ error:
    error: The requested URL returned error: 403 Forbidden while accessing https://github.com/grscheller/scheller-linux-environment/info/refs
    fatal: HTTP request failed
 ```
-
 To fix this, set the URL to
 
 ```bash
    $ git config remote.origin.url https://grscheller@github.com/grscheller/scheller-linux-environment.git
 ```
-
 Not recommended, but setting it to
 https://grscheller:MYPASSWORD@github.com/grscheller/scheller-linux-environment.git
 would allow you to not have to type your password.
@@ -1527,7 +1440,6 @@ To delete local tag:
 ```bash
    $ git tag -d tag_to_delete
 ```
-
 To delete off of a remote repo:
 
 ```bash
@@ -1553,25 +1465,21 @@ Use 'git show' to view a previous version of file
 ```bash
    $ git show REVISION:path/to/file
 ```
-
 for example
 
 ```bash
    $ git show HEAD~3:PAT_Files/mfiles/FilterValuesPanel.m
 ```
-
 will send the third version back of the file to a pager.
 
 ```bash
    $ git show HEAD~1:pat.m > junk
 ```
-
 will dump it all to a file called junk.
 
 ```bash
    $ git show HEAD@{2022-03-30}:./config/nvim/lua/grs/init.lua
 ```
-
 will show the version of the file as of that date.
 
 ```bash
@@ -1589,7 +1497,6 @@ will show the version of the file as of that date.
    WhichKey.lua
    init.lua
 ```
-
 which lists the files in that directory as of that date.
 
 ```bash
@@ -1605,7 +1512,6 @@ Use 'git log' to view the revision history a of file
 ```bash
    $ git log -p --follow config/nvim/init.lua
 ```
-
 The `-p` tells git to show all patch information, the `--follow` to
 follow the history even in the event that the file name was changed.
 
@@ -1620,7 +1526,6 @@ follow the history even in the event that the file name was changed.
 ```bash
    $ git log
 ```
-
 #### To shows history of both commits A and B (a Union)
 
 ```bash
@@ -1638,7 +1543,6 @@ follow the history even in the event that the file name was changed.
 ```bash
    $ git log --oneline
 ```
-
 To get the most out of git log, remember the
 seven rules of a great GIT commit message:
 
@@ -1664,7 +1568,6 @@ command.
 ```bash
    $ git diff feature1:file1 feature2:file2
 ```
-
 The line between the files which are the same will be colored white, red
 lines will be the items in file1 not in file2, green lines will be for
 items in file2 not in file1. Left red, Right green. The red lines will
@@ -1676,13 +1579,11 @@ correctly what you mean. I like to be non-ambiguous.
 ```bash
    $ git diff main: feature1:
 ```
-
 Comparing past version with what is in the working directory
 
 ```bash
    $ git diff HEAD~2:DVS.m DVS.m
 ```
-
 Note that 2 revisions ago need not necessarily be on the same branch!
 
 To comparing a file between branches
@@ -1690,7 +1591,6 @@ To comparing a file between branches
 ```bash
    $ git diff new_feature:DVS.m master:DVS.m
 ```
-
 If given only one argument, compare with the working directory.
 
 ### GIT Ranges
@@ -1727,7 +1627,6 @@ Find the best common ancestor for a three way merge.
    d71adde Implemented book's nonblocking fpinscala.parallelism package.
    Blocking version now package fpinscala.parallelism.javaFutures.
 ```
-
 Then search for equivalent of "d71adde" in a git log.
 
 ---
@@ -1738,9 +1637,8 @@ You need to turn color off in GIT and let nvim do colorization.
 
 ```bash
    $ git config --global color.pager no
-   $ git config --global core.pager 'nvim -R'
+   $ git config --global core.pager "nvim -R -c 'set filetype=git'"
 ```
-
 The `-R` means read-only.
 
 ---
@@ -1753,25 +1651,21 @@ back to a clean working directory:
 ```bash
    $ git stash push
 ```
-
 or just
 
 ```bash
    $ git stash
 ```
-
 Drop the last stash entry from the list of stash entries:
 
 ```bash
    $ git drop
 ```
-
-Pop changes back into working directory, perhaps on a subsequent commit
+Pop changes back into working directory, perhaps on a subsequent commit.
 
 ```bash
    $ git stash pop
 ```
-
 This may fail due to conflicts due to changes being applied at the
 commit that was HEAD at the time of the stash. Resolve the conflict
 and use git drop.
@@ -1781,7 +1675,6 @@ Remove all stash entries:
 ```bash
    $ git stash clear
 ```
-
   Note, entries will be subject to pruning, so there may be no way to
   recover these changes.
 
@@ -1815,7 +1708,6 @@ To create a temporary branch and push it upstream.
 
    nothing to commit, working tree clean
 ```
-
 **TODO:** Explain the difference between `git checkout branch`
 and `git switch branch`. The first is a bit overloaded.
 
