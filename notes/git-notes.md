@@ -398,6 +398,29 @@ Also, I can 'rm -rf .git' and either tar ball or burn to DVD what I want
 to give someone. Just make sure you do this in ~/temp/SDT and not in
 ~/Devel/SDT!!! I learned this the hard way.
 
+### Pushing a new branch to an empty upstream repo
+
+Suppose you create an empty (no branches) repo on GitHub. Then clone it.
+
+```bash
+   $ git clone git@github.com:grscheller/experimental.git
+   $ cd experimental
+```
+Git will complain that you cloned an empty repo.
+
+Do some work ... and push to GitHub.
+
+```
+   $ git add .
+   $ git commit -S
+   $ git branch --list|cat
+   * main
+   $ git push -u origin main
+```
+
+Now upstream has a branch called main and it is the origin of
+your local main branch.
+
 ---
 
 ## The fetch command
