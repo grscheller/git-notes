@@ -43,12 +43,10 @@ client's menus, keyboard shortcuts, and help utility. GUI and web
 clients come and go, GIT's CLI interface will be with us for decades, if
 not centuries.
 
-#### Resources I used to learn GIT:
+#### Useful resources to learn GIT:
 
 - [ProGIT Book](http://www.git-scm.com/book/en/v2)
 - [Atlassian - Setting up a repo](https://www.atlassian.com/git/tutorials/setting-up-a-repository)
-- [Git 101](https://www.garron.me/en/articles/git-101-basics-introduction-basic-use-commands.html)
-- [Stack Overflow](https://stackoverflow.com/?tab=active)
 
 ______________________________________________________________________
 
@@ -505,42 +503,35 @@ ______________________________________________________________________
 Here is the usual "state transitions" of files in a GIT workspace
 
 ```
-Deleted  Untracked            Unmodified        Modified           Staged
-∥          ∥                      ∥                  ∥                  ∥
-∥          ∥--git add-------------------------------------------------->∥
-∥          ∥                      ∥--edit file------>∥                  ∥
-∥          ∥                      ∥                  ∥--git add-------->∥
-∥          ∥                      ∥<------------------------git commit--∥
-∥<------------------------git rm--∥                  ∥                  ∥
-∥          ∥                      ∥                  ∥                  ∥
-∥          ∥<----git rm --cached--∥                  ∥                  ∥
-∥          ∥<-----------------------git rm --cached--∥                  ∥
-∥          ∥<------------------------------------------git rm --cached--∥
-∥          ∥                      ∥                  ∥                  ∥
-∥<----------------------------------------git rm -f--∥                  ∥
-∥<-----------------------------------------------------------git rm -f--∥
-∥          ∥                      ∥                  ∥                  ∥
+Deleted  Untracked           Unmodified        Modified           Staged
+  ∥        ∥                     ∥                  ∥                  ∥
+  ∥        ∥--git add------------∥------------------∥----------------->∥
+  ∥        ∥                     ∥--edit file------>∥                  ∥
+  ∥        ∥                     ∥                  ∥--git add-------->∥
+  ∥        ∥                     ∥<-----------------∥------git commit--∥
+  ∥<-------∥-------------git rm--∥                  ∥                  ∥
+  ∥        ∥                     ∥                  ∥                  ∥
+  ∥        ∥<---git rm --cached--∥                  ∥                  ∥
+  ∥        ∥<--------------------∥-git rm --cached--∥                  ∥
+  ∥        ∥<--------------------∥------------------∥-git rm --cached--∥
+  ∥        ∥                     ∥                  ∥                  ∥
+  ∥<-------∥---------------------∥-------git rm -f--∥                  ∥
+  ∥<-------∥---------------------∥------------------∥-------git rm -f--∥
 ```
 
 And here is the "life cycle" of a GIT workflow
 
 ```
-remote      tracked       local          index       workspace
-∥              ∥            ∥              ∥             ∥
-∥---pull------------------------------------------------>∥
-∥   |          ∥            ∥              ∥             ∥
-∥   |---------------------->∥              ∥<------add---∥
-∥   |          ∥            ∥              ∥             ∥
-∥   |--------->∥            ∥              ∥             ∥
-∥              ∥            ∥              ∥             ∥
-∥---fetch----->∥            ∥<----commit---∥             ∥
-∥              ∥            ∥              ∥             ∥
-∥              ∥            ∥              ∥             ∥
-∥<-------------------push---∥              ∥             ∥
-∥              ∥     |      ∥              ∥             ∥
-∥              ∥     |      ∥              ∥             ∥
-∥              ∥<----|      ∥              ∥             ∥
-∥              ∥            ∥              ∥             ∥
+remote      tracked       local         index       workspace
+∥              ∥            ∥             ∥             ∥
+∥--pull--------∥------------∥-------------∥------------>∥
+∥  |-----------∥----------->∥             ∥<-------add--∥
+∥  |---------->∥            ∥             ∥             ∥
+∥              ∥            ∥             ∥             ∥
+∥--fetch------>∥            ∥<----commit--∥             ∥
+∥<-------------∥------push--∥             ∥             ∥
+∥              ∥      |     ∥             ∥             ∥
+∥              ∥<-----|     ∥             ∥             ∥
 ```
 
 ### Checking status of files:
