@@ -551,7 +551,7 @@ To begin tracking a file
 
 ```bash
     $ git add myfile.c    # myfile.c is now staged
-    $ git add directory   # all files staged recursively
+    $ git add directory/  # all files in directory/ staged recursively
 ```
 
 Think of add as meaning "add this content to the next commit" rather
@@ -617,7 +617,7 @@ Example .gitinore file:
 
 ______________________________________________________________________
 
-## Moving and removing files.
+## Moving, removing, and adding files.
 
 ### Removing files
 
@@ -709,19 +709,33 @@ directory
 To remove an empty directory.
 
 GIT does not track directories, only files. You can't use "git
-rm" to remove a directory and push change.
+rm" to remove a directory and push this change. See
+[Cleaning up your working tree][#cleaning-up-your-working-tree]
+in the Git Maintenance section below,
 
-A good habit is to periodically use
+### Adding files to track
 
-```bash
-    $ git clean -dn
-```
-
-to see what needs cleaning up. Either manually clean up or use
+To add files recursively down from the current directory,
 
 ```bash
-    $ git clean -df
+    $ git add .
 ```
+
+This will also remove files that have been deleted.
+
+To only update tracked files, use
+
+```bash
+    $ git add --update .
+```
+
+This will prevent "random clutter" from being tracked.
+
+______________________________________________________________________
+
+## Git Maintenance
+
+### Cleaning up your working tree
 
 The `git clean` command takes the following options
 
@@ -735,7 +749,27 @@ The `git clean` command takes the following options
 | `-X` | remove only files ignored by git |
 | `-e pat` | add pattern `pat` to ignored patterns from .gitignore |
 
-One of -n, -f, or -i must be selected.
+Where one of -n, -f, or -i must be selected.
+
+To see what needs cleaning up, 
+
+```bash
+    $ git clean -dn
+```
+
+Then either manually clean up or use
+
+```bash
+    $ git clean -df
+```
+
+This won't work if there are `.gitignore` files in these directories.
+To fully clean things up, use
+
+```bash
+    $ git clean -fdxrn  # so you don't shoot yourself in the foot
+    $ git clean -fdxr
+```
 
 ______________________________________________________________________
 
