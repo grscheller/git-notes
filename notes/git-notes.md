@@ -504,34 +504,34 @@ ______________________________________________________________________
 
 Here is the "life cycle" of a file in a GIT workspace
 
-```text
-    Untracked        Unmodified      Modified         Staged
-        |                |              |                |
-        |⁃⁃⁃add file⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃>|                |
-        |                |⁃⁃edit file⁃⁃>|                |
-        |                |              |⁃⁃stage file⁃⁃⁃>|
-        |<⁃⁃remove file⁃⁃|              |                |
-        |                |<⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃commit file⁃⁃⁃|
-        |                |              |                |
+```
+Untracked           Unmodified         Modified            Staged
+    |                   |                 |                  |
+    |-----add file>-----------------------|                  |
+    |                   |-⁃⁃edit file>----|                  |
+    |                   |                 |---stage file---->|
+    |<----remove file---|                 |                  |
+    |                   |<--------------------commit file----|
+    |                   |                 |                  |
 ```
 
 And here is the "life cycle" of a GIT workflow
 
-```text
-    remote    tracked    local       index    workspace
-      |          |         |           |          |
-      |⁃⁃pull⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃>|
-      |  ⁝       |         |           |          |
-      |  ⁝⁃⁃⁃⁃⁃⁃>|         |           |<⁃⁃⁃add⁃⁃⁃|
-      |  ⁝       |         |           |          |
-      |  ⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃>|           |          |
-      |          |         |           |          |
-      |⁃⁃fetch⁃⁃>|         |<⁃⁃commit⁃⁃|          |
-      |          |         |           |          |
-      |<⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃     |           |          |
-      |          |   ⁝     |           |          |
-      |          |<⁃⁃push⁃⁃|           |          |
-      |          |         |           |          |
+```
+remote        tracked       local          index       workspace
+  |              |            |              |             |
+  |---pull------------------------------------------------>|
+  |   ⁝          |            |              |             |
+  |   ⁝---------------------->|              |<------add---|
+  |   ⁝          |            |              |             |
+  |   ---------->|            |              |             |
+  |              |            |              |             |
+  |---fetch----->|            |<----commit---|             |
+  |              |            |              |             |
+  |<-------------------push-⁃⁃|              |
+  |              |     ⁝      |              |             |
+  |              |<-----      |              |             |
+  |              |            |              |             |
 ```
 
 ### Checking status of files:
@@ -710,7 +710,7 @@ To remove an empty directory.
 
 GIT does not track directories, only files. You can't use "git
 rm" to remove a directory and push this change. See
-[Cleaning up your working tree][#cleaning-up-your-working-tree]
+[Cleaning up your working tree](#cleaning-up-your-working-tree)
 in the Git Maintenance section below,
 
 ### Adding files to track
