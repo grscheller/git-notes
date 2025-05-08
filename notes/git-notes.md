@@ -157,43 +157,31 @@ directory structure.
 ```bash
     $ cd ~/devel/notes/git-notes
     $ git config --list --show-origin --show-scope
-    global  file:/home/grs/.config/git/config       user.name=grscheller
-    global  file:/home/grs/.config/git/config       user.email=geoffrey@scheller.com
-    global  file:/home/grs/.config/git/config       user.signingkey=/home/grs/.ssh/id_ed25519_grscheller.pub
-    global  file:/home/grs/.config/git/config       core.editor=nvim
-    global  file:/home/grs/.config/git/config       core.fsmonitor=true
-    global  file:/home/grs/.config/git/config       core.pager=less
-    global  file:/home/grs/.config/git/config       color.pager=yes
-    global  file:/home/grs/.config/git/config       pull.rebase=false
-    global  file:/home/grs/.config/git/config       init.defaultbranch=main
-    global  file:/home/grs/.config/git/config       submodules.recurse=true
-    global  file:/home/grs/.config/git/config       diff.submodule=log
-    global  file:/home/grs/.config/git/config       rerere.enabled=true
-    global  file:/home/grs/.config/git/config       gpg.format=ssh
-    global  file:/home/grs/.gitconfig       maintenance.repo=/home/grs/devel/dot/dotfiles
-    global  file:/home/grs/.gitconfig       maintenance.repo=/home/grs/devel/dot/dotfiles-submodules/fish
-    global  file:/home/grs/.gitconfig       maintenance.repo=/home/grs/devel/dot/dotfiles-submodules/home
-    global  file:/home/grs/.gitconfig       maintenance.repo=/home/grs/devel/dot/dotfiles-submodules/nvim
-    global  file:/home/grs/.gitconfig       maintenance.repo=/home/grs/devel/dot/dotfiles-submodules/sway-env
-    global  file:/home/grs/.gitconfig       maintenance.repo=/home/grs/devel/grok/fpinScala3Stdlib
-    global  file:/home/grs/.gitconfig       maintenance.repo=/home/grs/devel/grok/grok-typescript
-    global  file:/home/grs/.gitconfig       maintenance.repo=/home/grs/devel/notes/git-notes
-    global  file:/home/grs/.gitconfig       maintenance.repo=/home/grs/devel/notes/neovim-notes
-    global  file:/home/grs/.gitconfig       maintenance.repo=/home/grs/devel/notes/scheller-linux-archive
-    global  file:/home/grs/.gitconfig       maintenance.repo=/home/grs/devel/pypi/boring-math
-    global  file:/home/grs/.gitconfig       maintenance.repo=/home/grs/devel/pypi/circular-array
-    global  file:/home/grs/.gitconfig       maintenance.repo=/home/grs/devel/pypi/datastructures
-    global  file:/home/grs/.gitconfig       maintenance.repo=/home/grs/devel/web
-    local   file:.git/config        core.repositoryformatversion=0
-    local   file:.git/config        core.filemode=true
-    local   file:.git/config        core.bare=false
-    local   file:.git/config        core.logallrefupdates=true
-    local   file:.git/config        remote.origin.url=git@github.com:grscheller/git-notes
-    local   file:.git/config        remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
-    local   file:.git/config        branch.main.remote=origin
-    local   file:.git/config        branch.main.merge=refs/heads/main
-    local   file:.git/config        maintenance.auto=false
-    local   file:.git/config        maintenance.strategy=incremental cd ~/devel/scheller-linux-archive
+    system	file:/etc/gitconfig	filter.lfs.required=true
+    system	file:/etc/gitconfig	filter.lfs.clean=git-lfs clean -- %f
+    system	file:/etc/gitconfig	filter.lfs.smudge=git-lfs smudge -- %f
+    system	file:/etc/gitconfig	filter.lfs.process=git-lfs filter-process
+    global	file:/home/grs/.config/git/config	user.name=grscheller
+    global	file:/home/grs/.config/git/config	user.email=geoffrey@scheller.com
+    global	file:/home/grs/.config/git/config	user.signingkey=~/.ssh/id_ed25519_grscheller.pub
+    global	file:/home/grs/.config/git/config	gpg.format=ssh
+    global	file:/home/grs/.config/git/config	core.editor=nvim
+    global	file:/home/grs/.config/git/config	core.fsmonitor=false
+    global	file:/home/grs/.config/git/config	core.pager=nvim -R -c 'set filetype=git'
+    global	file:/home/grs/.config/git/config	color.pager=no
+    global	file:/home/grs/.config/git/config	pull.rebase=false
+    global	file:/home/grs/.config/git/config	init.defaultbranch=main
+    global	file:/home/grs/.config/git/config	submodules.recurse=true
+    global	file:/home/grs/.config/git/config	diff.submodule=log
+    global	file:/home/grs/.config/git/config	rerere.enabled=true
+    local	file:.git/config	core.repositoryformatversion=0
+    local	file:.git/config	core.filemode=true
+    local	file:.git/config	core.bare=false
+    local	file:.git/config	core.logallrefupdates=true
+    local	file:.git/config	remote.origin.url=git@github.com:grscheller/git-notes
+    local	file:.git/config	remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+    local	file:.git/config	branch.main.remote=origin
+    local	file:.git/config	branch.main.merge=refs/heads/main
 ```
 
 ______________________________________________________________________
