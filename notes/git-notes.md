@@ -508,7 +508,7 @@ Here is the "life cycle" of a file in a GIT workspace
 Untracked           Unmodified         Modified            Staged
     |                   |                 |                  |
     |-----add file>-----------------------|                  |
-    |                   |-⁃⁃edit file>----|                  |
+    |                   |---edit file>----|                  |
     |                   |                 |---stage file---->|
     |<----remove file---|                 |                  |
     |                   |<--------------------commit file----|
@@ -528,7 +528,7 @@ remote        tracked       local          index       workspace
   |              |            |              |             |
   |---fetch----->|            |<----commit---|             |
   |              |            |              |             |
-  |<-------------------push-⁃⁃|              |
+  |<-------------------push---|              |
   |              |     ⁝      |              |             |
   |              |<-----      |              |             |
   |              |            |              |             |
@@ -751,7 +751,7 @@ The `git clean` command takes the following options
 
 Where one of -n, -f, or -i must be selected.
 
-To see what needs cleaning up, 
+To see what needs cleaning up,
 
 ```bash
     $ git clean -dn
@@ -1876,7 +1876,7 @@ To create a temporary branch and push it upstream.
     $ git status
     On branch tmpwork
     Your branch is up to date with 'origin/tmpWork'.
- 
+
     nothing to commit, working tree clean
 ```
 
