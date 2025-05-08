@@ -508,7 +508,7 @@ Here is the "life cycle" of a file in a GIT workspace
 Untracked           Unmodified         Modified            Staged
     |                   |                 |                  |
     |-----add file>-----------------------|                  |
-    |                   |---edit file>----|                  |
+    |                   |---edit file---->|                  |
     |                   |                 |---stage file---->|
     |<----remove file---|                 |                  |
     |                   |<--------------------commit file----|
@@ -528,9 +528,11 @@ remote        tracked       local          index       workspace
   |              |            |              |             |
   |---fetch----->|            |<----commit---|             |
   |              |            |              |             |
-  |<-------------------push---|              |
+  |              |            |              |             |
+  |<-------------------push---|              |             |
   |              |     ⁝      |              |             |
-  |              |<-----      |              |             |
+  |              |     ⁝      |              |             |
+  |              |<-----                     |             |
   |              |            |              |             |
 ```
 
