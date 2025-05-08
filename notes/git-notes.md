@@ -94,11 +94,11 @@ ______________________________________________________________________
 
 ### Five places git stores config info
 
-1. **/etc/gitconfig**
-1. **/usr/local/gitconfig**
-1. **~/.config/git/config**
-1. **~/.gitconfig**
-1. **.git/config at root of repo**
+- */etc/gitconfig*
+- */usr/local/gitconfig*
+- *~/.config/git/config*
+- *~/.gitconfig*
+- *.git/config at root of repo*
 
 Each one overrides the ones above it.
 
