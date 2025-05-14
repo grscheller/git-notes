@@ -755,8 +755,8 @@ This won't work if there are `.gitignore` files in these directories.
 To fully clean things up, use
 
 ```bash
-    $ git clean -fdxrn  # so you don't shoot yourself in the foot
-    $ git clean -fdxr
+    $ git clean -fdxn  # so you don't shoot yourself in the foot
+    $ git clean -fdx
 ```
 
 ______________________________________________________________________
