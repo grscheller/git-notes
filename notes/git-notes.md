@@ -763,20 +763,20 @@ ______________________________________________________________________
 
 ## Creating revisionist history via git rebase:
 
-Rewriting your history, don't do this if you have already shared it!!!
+Rewriting your history, don't do this if you already have shared it!!!
 
 The 'git rebase' command comes in handy when you need to reorder
 commits, change commit messages, squash commits together.
 
-Reasonable reasons for squashing commits might be
+A reasonable reason for squashing commits might be to enforce a policy
+of never pushing non-working history to a release branch. On the other
+hand, squashing commits puts changes into chunks which may be too large.
+This will make tools like `git bisect` much less effective, making it
+more difficult for end user bug reports to pinpoint when and where the
+code got broken.
 
-- enforcing a policy of never pushing non-working history to a
-  software release branch
-- to more effectively use `git bisect` to find a bug
-  - helpful to end users not familiar with the code base who spot a bug
-
-Hiding your *dirty laundry* so that everyone will think you write
-perfect code the first time is never a good reason to rebase.
+Hiding the scaffolding and refactoring you used to get to the code to
+its current state of affairs is never a good reason to rebase.
 
 ### Redo the last 4 commits:
 
@@ -886,10 +886,12 @@ To create a new local empty branch
     $ git checkout --orphan newBranch
 ```
 
-This will create a new branch without any commit. The first commit will
+This will create a new branch without any commits. The first commit will
 start a new history without any ancestry. The `--orphan` is a useful
 option when you want to create a directory structure and files
-resembling the ones from the current branch.
+resembling the ones from the current branch. Also when you want to
+create something related to the effort, like documentation or a software
+tool useful to the main project.
 
 #### List available branches
 
